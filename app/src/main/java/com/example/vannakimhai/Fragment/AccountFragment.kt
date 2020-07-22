@@ -2,19 +2,17 @@ package com.example.vannakimhai.Fragment
 
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.vannakimhai.Model.Customer
 import com.example.vannakimhai.R
-import org.json.JSONArray
-import org.json.JSONObject
-
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_account.*
 
 
 /**
@@ -31,27 +29,33 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         fetchingProfile()
     }
 
+
+
+
     fun fetchingProfile() {
-        Log.d("log init", "init" )
-        val requestQueue = Volley.newRequestQueue(context)
+
         val url = "http://ite-rupp.ap-southeast-1.elasticbeanstalk.com/profile.php"
-        val request = JsonArrayRequest(url, Response.Listener { response ->
-            val object = JSONObject(response)
-            val jsonArray: JSONArray = object.getJSONArray("result")
-            val jsonObject = jsonArray.getJSONObject(0)
-        }, Response.ErrorListener { error ->
-            Toast.makeText(context!!, "Load data error." + error.message, Toast.LENGTH_LONG).show()
-            Log.d("log data", "Load data error: " + error.message)
-        })
+        val requestQueue = Volley.newRequestQueue(context)
+        val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+                Response.Listener { response ->
+                    val gson = Gson()
+                    val customer: Customer = gson.fromJson<Customer>(response.toString(), Customer::class.java)
+                    name.text = customer.name
+                    phone.text = customer.phone
+                    address.text = customer.province
+                    profile_image.setImageURI(customer.profileImage)
 
+                },
+                Response.ErrorListener { error ->
+                    // TODO: Handle error
+                    Toast.makeText(context!!, "Load data error" + error, Toast.LENGTH_LONG).show()
+                }
+        )
+        requestQueue.add(jsonObjectRequest)
 
-        // Add request to Queue
-        requestQueue.add(request)
     }
 
 
