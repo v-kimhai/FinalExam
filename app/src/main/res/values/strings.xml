@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">VannaKimhai</string>
+
+    <string name="Home">Home</string>
+    <string name="Categories">Categories</string>
+    <string name="Search">Search</string>
+    <string name="Account">Account</string>
+
+    <string name="HomeDisplay">This is Home fragment</string>
+    <string name="CategoriesDisplay">This is Categories fragment</string>
+    <string name="SearchDisplay">This is Search fragment</string>
+    <string name="AccountDisplay">This is Account fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
