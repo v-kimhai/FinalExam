@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/mnu_home"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/action_order"
         android:title="My Orders" />
 
 
     <item
-        android:id="@+id/mnu_category"
-        android:icon="@drawable/ic_filter_list_black_24dp"
+        android:id="@+id/action_review"
         android:title="My Reviews"
         />
     <item
-        android:id="@+id/mnu_seach"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:id="@+id/action_search"
         android:title="Settings"/>
 
     <item
-        android:id="@+id/mnu_account"
-        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:id="@+id/action_change"
         android:title="Change Password"/>
 
     <item
-        android:id="@+id/Logout"
-        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:id="@+id/action_logout"
         android:title="Log out"/>
 </menu>

@@ -23,14 +23,15 @@ class AdaptorOrder (val product: Array<Product>) : RecyclerView.Adapter<AdaptorO
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = product[position]
-        holder.textViewDepartment.text = item.department
-        holder.textViewName.text = item.name
+        holder.txtDate.text = item.date
+        holder.txtStstus.text = item.status
+        holder.txtTotal.text = item.total
 
     }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewName = itemView.findViewById(R.id.name) as TextView
-
-        val textViewDepartment = itemView.findViewById(R.id.department) as TextView
+        var txtStstus = itemView.findViewById(R.id.status) as TextView
+        var txtDate = itemView.findViewById(R.id.date) as TextView
+        var txtTotal = itemView.findViewById(R.id.total) as TextView
     }
 
 }
